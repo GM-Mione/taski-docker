@@ -22,12 +22,12 @@ services:
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/static
+      - static:/frontend_static
 
   gateway:
     image: mi0ne/taski_gateway
     env_file: .env
     volumes:
-      - static:/static
+      - static:/staticfiles
     ports:
       - 8000:80

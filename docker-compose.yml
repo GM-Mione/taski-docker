@@ -12,20 +12,20 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend/
+    image: mi0ne/taski_backend
     env_file: .env
     volumes:
       - static:/backend_static
 
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: mi0ne/taski_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
 
   gateway:
-    build: ./gateway/
+    image: mi0ne/taski_gateway
     env_file: .env
     volumes:
       - static:/staticfiles
