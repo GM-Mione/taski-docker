@@ -7,7 +7,12 @@ SECRET_KEY = 'django-insecure-j_89af+30&&4qm*8z9_(^zz8p4-ho8z_m6ylm0s$h!-p@on1_^
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['89.169.175.71', '127.0.0.1', 'localhost', 'yphost.zapto.org']
+ALLOWED_HOSTS_STRING = os.getenv('ALLOWED_HOSTS')
+
+if ALLOWED_HOSTS_STRING:
+    ALLOWED_HOSTS = ALLOWED_HOSTS_STRING.split(',')
+else:
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 

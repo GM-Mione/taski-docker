@@ -16,6 +16,8 @@ services:
     env_file: .env
     volumes:
       - static:/backend_static
+    depends_on:
+      - db
 
   frontend:
     image: mi0ne/taski_frontend
@@ -27,6 +29,9 @@ services:
   gateway:
     image: mi0ne/taski_gateway
     env_file: .env
+    depends_on:
+      - db
+      - backend
     volumes:
       - static:/staticfiles
     ports:
